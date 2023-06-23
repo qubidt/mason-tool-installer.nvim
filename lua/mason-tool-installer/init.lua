@@ -19,7 +19,8 @@ local setup = function(settings)
   }
 end
 
-local debounce_file = vim.fn.stdpath 'data' .. '/mason-tool-installer-debounce'
+local debounce_file = ((vim.fn.has 'nvim-0.8' == 1) and vim.fn.stdpath 'state' or vim.fn.stdpath 'data')
+  .. '/mason-tool-installer-debounce'
 
 local read_last_timestamp = function()
   local f = io.open(debounce_file)
